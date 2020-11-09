@@ -1,3 +1,17 @@
+<?php
+$_flag = $_REQUEST['flag'];
+if( $_flag == '1' ) {
+    $username = $_REQUEST['username'];
+    $weburl = $_REQUEST['weburl'];
+    $email = $_REQUEST['email'];
+    $telephone = $_REQUEST['telephone'];
+    $comment = $_REQUEST['comment'];
+
+    print_r($username);
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +24,8 @@
 </head>
 <body>
     <div class="formBox">
-        <form id="mainForm" action="">
-            
+        <form id="mainForm" action="#" method="post">
+            <input type="hidden" name="flag" value="1" />
             <div class="Form">
                 <h3 class="formHeader">Um welche Art von Webseite geht es bei Ihnen?</h3>
                 <div class="inlineFormStyle">
@@ -174,22 +188,22 @@
                 
                 <div class="formRow">
                     <div class="inputBox">
-                        <input type="text" required="required">
+                        <input type="text" required="required" name="username">
                         <span>Name</span>
                     </div>
                     <div class="inputBox">
-                        <input type="text" required="required">
+                        <input type="text" required="required" name="weburl">
                         <span>bestehende Webseite</span>
                     </div>
                 </div>
 
                 <div class="formRow">
                     <div class="inputBox">
-                        <input type="email" required="required">
+                        <input type="email" required="required" name="email">
                         <span>Email</span>
                     </div>
                     <div class="inputBox">
-                        <input type="number" required="required">
+                        <input type="number" required="required" name="telephone">
                         <span>Telefonnummer</span>
                     </div>
                 </div>
