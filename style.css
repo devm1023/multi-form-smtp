@@ -1,0 +1,238 @@
+* {
+
+    font-family: "Poppins", sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.formBox {
+    background: #fff;
+    width: 80%;
+}
+#mainForm {
+    width: 100%;
+    min-height: 350px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    background: #fff;
+}
+#mainForm .formHeader {
+    font-size: 25px;
+}
+#mainForm .inlineFormStyle {
+    position: relative;
+    display: flex;
+    height: var(100% - 75px);
+    justify-content: space-around;
+    align-items: center;
+}
+.inlineFormStyle .optionsBx {
+    position: relative;
+    display: flex;
+    padding: 1%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 20%;
+}
+.inlineFormStyle .optionsBx label .fa {
+    font-size: 50px;
+    color: #000;
+    margin-bottom: 20px;
+}
+.inlineFormStyle .optionsBx input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    opacity: 0;
+    cursor: pointer;
+}
+.inlineFormStyle .optionsBx .check {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    color: transparent;
+}
+.inlineFormStyle .optionsBx input[type="radio"]:hover + .inlineFormStyle .optionsBx .check {
+    color: rgba(0, 0, 0, 0.3);
+}
+.inlineFormStyle .optionsBx #unternehmenseite:checked + .check {
+    color: #fb383b;
+}
+.Form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: 0.5s;
+}
+.Form label {
+    width: 100%;
+}
+.Form {
+    left: 100%;
+}
+.BackBtn {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    font-size: 30px;
+    color: #fb383b;
+    cursor: pointer;
+}
+#Form5 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#Form5 .formRowFirst {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#Form5 .formRow {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+#Form5 .formRow .inputBox {
+    position: relative;
+    width: 50%;
+    height: 46px;
+    margin-bottom: 15px;
+}
+.inputBox:last-child {
+    margin-bottom: 0;
+}
+.inputBox input {
+    width: 90%;
+    margin: auto;
+}
+.inputBox input,
+.inputBox2 textarea {
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 300;
+    transition: 0.5s;
+}
+.inputBox span,
+.inputBox2 span {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    padding: 10px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 300;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.inputBox input:focus,
+.inputBox2 textarea:focus {
+    background: rgba(0, 0, 0, 0.7);
+}
+.inputBox input:focus ~ span,
+.inputBox input:valid ~ span{
+    transform: translate(-6px, -25px);
+    font-size: 12px;
+    color:rgba(0, 0, 0, 0.7);
+}
+.Form .formRow .inputBox2 {
+    width: 100%;
+    margin-bottom: 15px;
+}
+.Form .formRow .inputBox2 textarea {
+    width: 95%;
+}
+.Form .formRow .inputBox2 input {
+    border: none;
+    border-radius: 5px;
+    background:rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+}
+.Form .formRow .inputBox2 input:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+.Form .lastRow {
+    width: 100%;
+    margin-bottom: 15px;
+}
+.Form .lastRow span {
+    margin: 10px;
+}
+
+#step-row {
+    width: 90%;
+    height: 20px;
+    margin: auto;
+    margin-bottom: 40px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.step-col {
+    width: 200px;
+    text-align: center;
+}
+#progress {
+    position: absolute;
+    height: 20px;
+    width: 0%;
+    margin: auto;
+    background: #fb383b;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+#step-row .step-col small {
+    color: #fff;
+    transition: 0.5s;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    transform: translateX(-50%);
+    background-color: #fb383b;
+    border-radius: 5px;
+    padding: 2px 10px;
+    opacity: 1;
+}
+#step-row .step-col small:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 6px solid #fb383b;
+}
+#step-row .step-col small {
+    transition: 0.5s;
+    opacity: 1;
+}
