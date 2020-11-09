@@ -1,4 +1,11 @@
 <?php
+require_once('inc.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require_once "vendor/autoload.php";
+
 $_flag = $_REQUEST['flag'];
 if( $_flag == '1' ) {
     $username = $_REQUEST['username'];
@@ -7,7 +14,40 @@ if( $_flag == '1' ) {
     $telephone = $_REQUEST['telephone'];
     $comment = $_REQUEST['comment'];
 
-    print_r($username);
+    // sending mail process
+    $mail = new PHPMailer(true);
+                               
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();            
+    //Set SMTP host name                          
+    $mail->Host = HOST;
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;                          
+    //Provide username and password     
+    $mail->Username = HOST_USERNAME;                 
+    $mail->Password = HOST_PASSWORD;                           
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = HOST_SECURE;                           
+    //Set TCP port to connect to
+    $mail->Port = HOST_PORT;                                   
+
+    $mail->From = EMAIL_FROM;
+    $mail->FromName = FROM_NAME;
+
+    $mail->addAddress($email, $username);
+
+    $mail->isHTML(true);
+
+    $mail->Subject = "Subject Text";
+    $mail->Body = "<i>Mail body in HTML</i>";
+    $mail->AltBody = "This is the plain text version of the email content";
+
+    try {
+        $mail->send();
+        echo "Message has been sent successfully";
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
     exit;
 }
 ?>
@@ -210,7 +250,7 @@ if( $_flag == '1' ) {
                 
                 <div class="formRow">
                     <div class="inputBox2">
-                        <textarea name="comment" form="usrform" rows="2">Persönliche Nacheicht</textarea>
+                        <textarea id="comment" name="comment" rows="2">Persönliche Nacheicht</textarea>
                     </div>
                 </div>
                 
