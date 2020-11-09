@@ -5,7 +5,17 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require_once "vendor/autoload.php";
-
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<?php
 $_flag = $_REQUEST['flag'];
 if( $_flag == '1' ) {
     $username = $_REQUEST['username'];
@@ -13,6 +23,11 @@ if( $_flag == '1' ) {
     $email = $_REQUEST['email'];
     $telephone = $_REQUEST['telephone'];
     $comment = $_REQUEST['comment'];
+    $isChecked = $_REQUEST['isChecked'];
+    $Form1_result = $_REQUEST['Form1'];
+    $Form2_result = $_REQUEST['Form2'];
+    $Form3_result = $_REQUEST['Form3'];
+    $Form4_result = $_REQUEST['Form4'];
 
     // sending mail process
     $mail = new PHPMailer(true);
@@ -38,30 +53,35 @@ if( $_flag == '1' ) {
 
     $mail->isHTML(true);
 
-    $mail->Subject = "Subject Text";
-    $mail->Body = "<i>Mail body in HTML</i>";
-    $mail->AltBody = "This is the plain text version of the email content";
+    $mail->Subject = "Relaunch | Eine bestehende Webseite erneuern";
+    $mail_content = '<p> 1. Name: ' . $username . '</p>';
+    $mail_content .= '<p> 2. Bestehende Website: ' . $weburl . '</p>';
+    $mail_content .= '<p> 3. E-mail: ' . $email . '</p>';
+    $mail_content .= '<p> 4. Telefonnummer:' . $telephone . '</p>';
+    $mail_content .= '<p> 5. Message:' . $comment . '</p>';
+    $mail_content .= '<p> 6. Relaunch | Eine bestehende Webseite erneuern:';
+    if( $isChecked == '1') {
+        $mail_content .= ' Ja, ich möchte eine Neugestaltung</p>';
+    } else {
+        $mail_content .= ' No</p>';
+    }
+    $mail_content .= '<p> 7. Um welche Art von Webseite geht es bei Ihnen? ' . $Form1_result . '</p>';
+    $mail_content .= '<p> 8. Wie hoch ist ihr (einmaliges) Budget Für ';
+    $mail_content .= ' die Entwicklung Ihres Projektes? ' . $Form2_result . '</p>';
+    $mail_content .= '<p> 9. Wie hoch ist Ihr monatliches Budget Für SEO, Wartung und Pflege Ihres Projektes? ' . $Form3_result . '</p>';
+    $mail_content .= '<p> 10. Bis wann soll das Projekt spätestens online sein? ' . $Form4_result . '</p>';
+    $mail->Body = $mail_content;
+    $mail->AltBody = "Relaunch | Eine bestehende Webseite erneuern";
 
     try {
         $mail->send();
-        echo "Message has been sent successfully";
+        echo "<p id='thanks'>Vielen Dank, ich werde Ihnen innerhalb von 48 Stunden antworten</p>";
     } catch (Exception $e) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        echo "<p id='thanks'>Mailer Error: " . $mail->ErrorInfo . "</p>";
     }
     exit;
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="jquery-1.11.3.js"></script>
-</head>
 <body>
     <div class="formBox">
         <form id="mainForm" action="#" method="post">
@@ -223,7 +243,11 @@ if( $_flag == '1' ) {
             <div id="Form5" class="Form">
                 <div class="formRowFirst">
                     <i class="fa fa-arrow-left BackBtn" aria-hidden="true"></i>
-                    <h3 class="formHeader"><i class="fa fa-check-square-o" aria-hidden="true"></i> Relaunch | Eine bestehende Webseite erneuern</h3>
+                    <h3 class="formHeader">
+                        <input type="hidden" id="isChecked" name="isChecked" value="0" />
+                        <i class="fa fa-square-o" id="checkedCtrl" aria-hidden="true"></i> 
+                        Relaunch | Eine bestehende Webseite erneuern
+                    </h3>
                 </div>
                 
                 <div class="formRow">
@@ -275,28 +299,7 @@ if( $_flag == '1' ) {
         </div>
     </div>
 
-    <script>
-        jQuery(document).ready(function($) {
-            var progress = 0;
-            $('.Form').first().css('left', '0');
-            function setProgress() {
-                $('#progress').css('width', progress + '%');
-                $('#step-row .step-col small').css('left', progress / 2 + '%');
-                $('#step-row .step-col small').html(progress + '%');
-            }
-            $('#mainForm .optionsBx .customNextBtn').on('click', function() {
-                $(this).parents('.Form').css('left', '-100%');
-                $(this).parents('.Form').next('.Form').css('left', '0');
-                progress += 25;
-                setProgress();
-            });
-            $('.BackBtn').on('click', function() {
-                $(this).parents('.Form').css('left', '-100%');
-                $(this).parents('.Form').prev('.Form').css('left', '0');
-                progress -= 25;
-                setProgress();
-            });
-        });
-    </script>
+    <script type="text/javascript" src="assets/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

@@ -236,3 +236,11 @@ body {
     transition: 0.5s;
     opacity: 1;
 }
+#checkedCtrl {
+    width: 22px;
+}
+#thanks {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}

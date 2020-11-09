@@ -1,0 +1,9 @@
+<?php
+    const HOST = 'smtp.gmail.com';
+    const HOST_USERNAME = '***@gmail.com';
+    const HOST_PASSWORD = '***';
+    const HOST_PORT = 587;
+    const HOST_SECURE = 'tls';
+    const EMAIL_FROM = '***@gmail.com';
+    const FROM_NAME = 'ADMIN';
+?>
