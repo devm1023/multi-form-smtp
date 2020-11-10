@@ -1,20 +1,25 @@
 jQuery(document).ready(function($) {
     var progress = 0;
-    $('.Form').first().css('left', '0');
+    //$('.Form').first().css('left', '0');
+    $('.Form').first().show();
     function setProgress() {
         $('#progress').css('width', progress + '%');
         $('#step-row .step-col small').css('left', progress / 2 + '%');
         $('#step-row .step-col small').html(progress + '%');
     }
     $('#mainForm .optionsBx .customNextBtn').on('click', function() {
-        $(this).parents('.Form').css('left', '-100%');
-        $(this).parents('.Form').next('.Form').css('left', '0');
+        //$(this).parents('.Form').css('left', '-100%');
+        //$(this).parents('.Form').next('.Form').css('left', '0');
+        $(this).parents('.Form').hide();
+        $(this).parents('.Form').next('.Form').show();
         progress += 25;
         setProgress();
     });
     $('.BackBtn').on('click', function() {
-        $(this).parents('.Form').css('left', '-100%');
-        $(this).parents('.Form').prev('.Form').css('left', '0');
+        //$(this).parents('.Form').css('left', '-100%');
+        //$(this).parents('.Form').prev('.Form').css('left', '0');
+        $(this).parents('.Form').hide();
+        $(this).parents('.Form').prev('.Form').show();
         progress -= 25;
         setProgress();
     });

@@ -79,7 +79,8 @@ body {
     width: 100%;
 }
 .Form {
-    left: 100%;
+    /* left: 100%; */
+    display: none;
 }
 .BackBtn {
     position: absolute;
@@ -91,7 +92,7 @@ body {
 }
 #Form5 {
     position: relative;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -107,6 +108,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 600px;
+    margin: 0 auto;
 }
 #Form5 .formRow .inputBox {
     position: relative;
@@ -132,7 +134,7 @@ body {
     font-size: 16px;
     color: #fff;
     font-weight: 300;
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 .inputBox span,
 .inputBox2 span {
@@ -174,6 +176,8 @@ body {
 }
 .Form .formRow .inputBox2 input:hover {
     background: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
 }
 .Form .lastRow {
     width: 100%;
@@ -243,4 +247,115 @@ body {
     width: 100%;
     text-align: center;
     margin-top: 30px;
+}
+
+/* Responsive Style */
+@media only screen and (max-width: 900px) {
+    .formBox {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    body {
+        display: block;
+    }
+    .formBox {
+        width: 100%;
+    }
+    #mainForm {
+        display: block;
+    }
+    #mainForm .formHeader {
+        width: 80%;
+        margin: 30px auto;
+    }
+    .Form {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    #mainForm .inlineFormStyle {
+        display: block;
+    }
+    .inlineFormStyle .optionsBx {
+        display: inline-block;
+        margin: 2%;
+        width: 37%;
+    }
+    #step-row {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #mainForm .formHeader {
+        width: 92%;
+        margin: 20px auto;
+    }
+    #Form5 .formRow {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+        display: block;
+    }
+    .formBox {
+        width: 100%;
+    }
+    #mainForm {
+        display: block;
+    }
+    #mainForm .formHeader {
+        width: 95%;
+        margin: 20px auto;
+        text-align: left;
+    }
+    .Form {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    #mainForm .inlineFormStyle {
+        display: block;
+    }
+    .inlineFormStyle .optionsBx {
+        display: inline-block;
+        margin: 2%;
+        width: 80%;
+    }
+    #step-row {
+        margin-top: 30px;
+    }
+    #Form5 .formRow {
+        width: 100%;
+    }
+    .BackBtn {
+        position: static;
+    }
+    #Form5 .formRow {
+        display: block;
+    }
+    #Form5 .formRow .inputBox {
+        width: 100%;
+    }
+    .inputBox span, .inputBox2 span {
+        left: 14px;
+    }
+    #Form5 .formRowFirst {
+        display: block;
+    }
+    #Form5 .formRow textarea {
+        width: 90%;
+    }
+    .Form .lastRow span {
+        margin: 10px;
+        display: block;
+        text-align: left;
+        margin-left: 20px;
+    }
 }
